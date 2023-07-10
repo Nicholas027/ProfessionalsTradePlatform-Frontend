@@ -3,6 +3,7 @@ import useTitle from "../../hooks/useTitle";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { NavLink } from "react-router-dom";
+import api from "../../app/api/api";
 
 export const Signup = () => {
   useTitle("Registro de Usuario");
@@ -31,25 +32,25 @@ export const Signup = () => {
       case "nombre":
         errors.nombre =
           value.length < 3
-            ? "⚠ Nombre debe tener almenos 3 caracteres de largo"
+            ? "⚠ Nombre debe tener al menos 3 caracteres de largo"
             : "";
         break;
       case "apellido":
         errors.apellido =
           value.length < 3
-            ? "⚠ Apellido debe tener almenos 3 caracteres de largo"
+            ? "⚠ Apellido debe tener al menos 3 caracteres de largo"
             : "";
         break;
       case "numeroContacto":
         errors.numeroContacto =
-          value.length < 3
-            ? "⚠ Su numero de telefono debe tener almenos 3 caracteres de largo"
+          value.length < 10
+            ? "⚠ Su número de celular debe tener 10 dígitos"
             : "";
         break;
       case "email":
         errors.email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
           ? ""
-          : "⚠ Formato de email invalido, debe respetar el formato: xxx@xxx.com";
+          : "⚠ Formato de email inválido, debe respetar el formato: xxx@xxx.com";
         break;
       case "password":
         errors.password =
@@ -77,7 +78,7 @@ export const Signup = () => {
         `https://api.apilayer.com/email_verification/${formData.email}`,
         {
           headers: {
-            apikey: "1euOVmfkxNzi22vlVI69VKxkNPfzeZRB",
+            apikey: "ZGMNG0afqZaRiLFavg4q6vFPZeSZlkWS",
           },
         }
       );
@@ -116,8 +117,8 @@ export const Signup = () => {
         ? "⚠ Apellido debe tener almenos 3 caracteres de largo"
         : "";
     errors.numeroContacto =
-      formData.numeroContacto.length < 3
-        ? "⚠ Su numero de telefono debe tener almenos 3 caracteres de largo"
+      formData.numeroContacto.length < 10
+        ? "⚠ Su número de celular debe tener 10 dígitos"
         : "";
     errors.email =
       /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) &&
@@ -134,10 +135,7 @@ export const Signup = () => {
         : "";
     if (Object.values(errors).every((error) => error === "")) {
       try {
-        const response = await axios.post(
-          "http://localhost:3500/auth/register",
-          formData
-        );
+        const response = await api.post("/auth/register", formData);
         console.log(response);
         Swal.fire({
           icon: "success",
@@ -280,20 +278,36 @@ export const Signup = () => {
                   </div>
 
                   <div className="form-group">
-                    <input
-                      placeholder="Ingrese su numero de telefono"
-                      type="number"
-                      className={`form-control mb-3 ${
-                        validationErrors.numeroContacto !== ""
-                          ? "is-invalid"
-                          : ""
-                      }`}
-                      name="numeroContacto"
-                      onChange={handleChange}
-                      value={formData.numeroContacto}
-                      autoComplete="off"
-                      isInvalid={validationErrors.numeroContacto !== ""}
-                    />
+                    <label htmlFor="numeroContacto" className="mb-2">
+                      Ingrese su número de celular:
+                    </label>
+                    <div
+                      className="input-group"
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <span
+                        className="country-code mb-3 ml-2"
+                        style={{
+                          marginRight: "5px",
+                        }}
+                      >
+                        +54 9
+                      </span>
+                      <input
+                        placeholder="Ejemplo: 381 90923412"
+                        type="number"
+                        className={`form-control mb-3 ${
+                          validationErrors.numeroContacto !== ""
+                            ? "is-invalid"
+                            : ""
+                        }`}
+                        name="numeroContacto"
+                        onChange={handleChange}
+                        value={formData.numeroContacto}
+                        autoComplete="off"
+                        isInvalid={validationErrors.numeroContacto !== ""}
+                      />
+                    </div>
                     {validationErrors.numeroContacto && (
                       <p className="error-message text-danger">
                         {validationErrors.numeroContacto}

@@ -19,7 +19,7 @@ const PersistLogin = () => {
   useEffect(() => {
     if (effectRan.current === true || process.env.NODE_ENV !== "development") {
       const verifyRefreshToken = async () => {
-        console.log("verifying refresh token");
+        console.log("verificando refresh token");
         try {
           //const response =
           await refresh();
@@ -51,7 +51,7 @@ const PersistLogin = () => {
     //persist: yes, token: no
     console.log("error");
     content = (
-      <p className="errmsg p-5">
+      <p className="errmsg p-5" style={{ marginBottom: "700px" }}>
         {`${error?.data?.message} - `}
         <Link to="/login">Cierre y vuelva a iniciar su sesión por favor</Link>
       </p>

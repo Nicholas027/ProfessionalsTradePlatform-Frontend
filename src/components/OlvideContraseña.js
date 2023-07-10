@@ -1,11 +1,7 @@
-import axios from "axios";
-
+import api from "../app/api/api";
 export const passwordRecoveryMail = async (email) => {
   try {
-    const response = await axios.post(
-      "http://localhost:3500/auth/passwordRecoveryMail",
-      { email }
-    );
+    const response = await api.post("/auth/passwordRecoveryMail", { email });
     return response.data;
   } catch (error) {
     throw new Error(error.response.data.error);
@@ -18,7 +14,7 @@ export const verifyVerificationCode = async (
   newPassword
 ) => {
   try {
-    const response = await axios.post("http://localhost:3500/auth/verifyCode", {
+    const response = await api.post("/auth/verifyCode", {
       email,
       verificationCode,
       newPassword,

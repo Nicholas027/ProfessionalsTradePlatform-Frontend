@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 
 const WorkWithUs = () => {
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     Swal.fire({
@@ -97,14 +98,31 @@ const WorkWithUs = () => {
                   </div>
                   <br></br>
                   <div className="form-group">
-                    <input
-                      type="number"
-                      className="form-control"
-                      name="numeroContacto"
-                      placeholder="Ingrese su número de telefono"
-                      autoComplete="off"
-                      required
-                    />
+                    <label htmlFor="numeroContacto" className="mb-2">
+                      Ingrese su número de celular:
+                    </label>
+                    <div
+                      className="input-group"
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <span
+                        className="country-code mb-3 ml-2"
+                        style={{
+                          marginRight: "5px",
+                        }}
+                      >
+                        +54 9
+                      </span>
+                      <input
+                        placeholder="Ejemplo: 381 90923412"
+                        type="number"
+                        className="form-control mb-3"
+                        name="numeroContacto"
+                        id="numeroContacto"
+                        required
+                        autoComplete="off"
+                      />
+                    </div>
                   </div>
                   <br></br>
                   <div className="form-group">

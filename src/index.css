@@ -7,8 +7,85 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.my-confirm-button-class {
+  background-color: #fa7c1f;
+  color: #ffffff;
+}
+
+.dropdown-item {
+  color: #fa7c1f;
+  background-color: #ffffff;
+  transition: background-color 0.2s ease-out;
+}
+
+.item-logout {
+  color: #fa1f1f;
+  background-color: #ffffff;
+  transition: background-color 0.2s ease-out;
+}
+
+.dropdown-item:hover {
+  background-color: #f27405;
+  color: white;
+}
+
+.item-logout:hover {
+  background-color: #f2052d;
+  color: white;
+}
+
+.fa-star-half {
+  color: #ffd700;
+}
 .fa-star {
   color: #ffd700;
+}
+
+.alertLogo {
+  margin-left: 0.5vw;
+  margin-bottom: 1.3vw;
+}
+
+.head {
+  position: relative;
+  display: inline-block;
+}
+.image-text {
+  position: absolute;
+  top: 4.2vw;
+  left: 3.5vw;
+  margin: 0px;
+  color: #fff;
+  font-size: 3.5vw;
+  font-weight: bold;
+}
+
+.categorias-card {
+  margin-bottom: 15px;
+}
+
+.categories-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 85px;
+}
+
+.categories-container img {
+  max-width: 100%;
+  height: auto;
+  margin: 0.2vw;
+}
+
+@media (max-width: 768px) {
+  .categories-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .categories-container img {
+    margin: 1.5vw 0;
+  }
 }
 
 .comments-container {
@@ -232,8 +309,7 @@ body {
 .parrafo {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 30vh;
+  height: 5vh;
 }
 
 .categorias1 {
@@ -273,17 +349,26 @@ body {
 .card-container {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .card-container img {
   max-width: 100%;
   height: auto;
+  margin-right: 25px;
+}
+@media screen and (max-width: 932px) {
+  .card-container img {
+    max-width: 100%;
+    height: auto;
+    margin-right: 0px;
+  }
 }
 
 /*new footer code*/
 .footer-container {
   background-color: #010b40;
-
+  height: auto;
   padding: 20px 0;
   margin-left: 122px;
   font-size: 14px;
@@ -306,6 +391,7 @@ body {
 .footer-content {
   max-width: 1200px;
   margin-left: 160px;
+  height: auto;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -355,52 +441,26 @@ body {
   text-decoration: underline;
 }
 
-@media (min-width: 768px) {
-  .header {
-    display: flex;
-    justify-content: center;
-  }
-
-  .nav {
-    width: 100%;
-    margin: 0;
-  }
-
-  .nav-links {
-    display: flex;
-    position: relative;
-    top: 0;
-    right: 0;
-    background-color: transparent;
-    box-shadow: none;
-  }
-
-  .nav-links li {
-    margin-right: 40px;
-  }
-
-  .nav-icon {
-    display: none;
-  }
+.botoncategorias {
+  margin-left: 0;
 }
 
-@media only screen and (min-width: 768px) {
-  .footer-info,
-  .footer-access,
-  .footer-contact {
-    flex-basis: calc(33.33% - 60px);
-    margin-right: 30px;
-    margin-bottom: 0;
-  }
+.parrafo {
+  margin-left: 0;
 }
 
 @media screen and (max-width: 997px) {
-  .nav {
-    display: none;
-  }
-
   .nav-toggle {
     display: block;
+  }
+  #logo-container {
+    display: none;
+  }
+}
+
+@media (max-width: 902px) {
+  .button-container {
+    right: auto;
   }
 }
 
@@ -421,63 +481,138 @@ body {
     display: flex !important;
   }
 }
-@media screen and (max-width: 768px) {
-  .navbar-menu {
-    display: none;
-    position: absolute;
-    top: 50px;
-    left: 0;
-    width: 100%;
-    background-color: #fff;
-    padding: 0;
-    margin: 0;
-  }
-  .navbar-menu.show {
-    display: block;
-  }
-  .navbar-menu li {
-    display: block;
-    border-bottom: 1px solid #ccc;
-  }
-  .navbar-menu li:last-child {
-    border-bottom: none;
-  }
-  .navbar-toggle {
-    display: block;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
-  .navbar-toggle .navbar-toggle-icon {
-    display: block;
-    width: 20px;
-    height: 3px;
-    background-color: #333;
-    border-radius: 2px;
-    margin-bottom: 3px;
-  }
-  .navbar-toggle .navbar-toggle-icon:before,
-  .navbar-toggle .navbar-toggle-icon:after {
-    content: "";
-    display: block;
-    width: 20px;
-    height: 3px;
-    background-color: #333;
-    border-radius: 2px;
-  }
-  .navbar-toggle .navbar-toggle-icon:before {
-    transform: translateY(-6px);
-  }
-  .navbar-toggle .navbar-toggle-icon:after {
-    transform: translateY(3px);
-  }
-}
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.mobile-nav {
+  display: none;
+}
+.profile-container-2 {
+  display: none;
+}
+.perfiles-similares-2 {
+  display: none;
+}
+@media screen and (max-width: 769px) {
+  footer {
+    display: none;
+  }
+  header {
+    display: none;
+  }
+  .mobile-nav {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+    left: 0;
+  }
+  .navbar-brand {
+    margin-left: 10px;
+  }
+  .navbar-toggler {
+    margin-right: 20px;
+  }
+  .nav-link {
+    color: rgb(255, 162, 0);
+    font-weight: bold;
+  }
+  .categorias-div {
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    flex-wrap: wrap;
+    margin-right: 10px;
+  }
+  .categorias-div .col-2 {
+    flex: 0 0 auto;
+    margin-bottom: 15px;
+  }
+  .botoncategorias {
+    margin-left: 255px;
+  }
+
+  .content {
+    margin-left: 20px;
+    width: auto;
+  }
+
+  .perfiles-similares {
+    display: none;
+  }
+  .profile-container {
+    display: none;
+  }
+  .profile-container-2 {
+    display: flex;
+  }
+  .card-title {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 459px) {
+  footer {
+    display: none;
+  }
+  header {
+    display: none;
+  }
+  .parrafo {
+    margin-left: 50px;
+  }
+  .botoncategorias {
+    margin-left: 90px;
+  }
+  .mobile-nav {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+    left: 0;
+  }
+  .navbar-brand {
+    margin-left: 10px;
+  }
+  .navbar-toggler {
+    margin-right: 20px;
+  }
+  .nav-link {
+    color: rgb(255, 162, 0);
+  }
+  .categorias-div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-title {
+    width: 100%;
+  }
+  .col-md-6 {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 380px) {
+  .botoncategorias {
+    margin-left: 60px;
+  }
+  .parrafo {
+    margin-left: 55px;
+  }
+  #professionals {
+    margin-left: 0;
+    .row {
+      padding-left: 0;
+    }
+  }
+}
+@media screen and (width: 1440px) {
+  .botoncategorias {
+    margin-left: 0px;
+  }
 }

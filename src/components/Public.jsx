@@ -1,10 +1,10 @@
-import Swal from "sweetalert2";
 import React from "react";
 import { UserContext } from "../features/context/UserProvider";
 import useTitle from "../hooks/useTitle";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../index.css";
+import toast, { Toaster } from "react-hot-toast";
 
 const Public = () => {
   useTitle("Datazo.com");
@@ -14,136 +14,225 @@ const Public = () => {
   const alertLogged = (e) => {
     e.preventDefault();
     if (user === false) {
-      Swal.fire({
-        icon: "error",
-        text: "Debe haber iniciado sesión para ver a los profesionales disponibles",
-      });
-      navigate("/");
+      return toast((t) => (
+        <span>
+          Regístrate o inicia sesión para acceder al catálogo de profesionales
+          de oficio y disfrutar de nuestra plataforma.{" "}
+          <a href="/signup">¡Regístrate ahora en pocos minutos!</a>
+        </span>
+      )).then(navigate("/"));
     }
   };
 
-  const content = (
+  return (
     <>
-      <section className="head">
-        <div style={{ maxWidth: "100%", overflow: "hidden" }}>
+      <Toaster position="bottom-left" reverseOrder={false} />
+      <section className="head mt-3">
+        <div
+          style={{ position: "relative", maxWidth: "100%", overflow: "hidden" }}
+        >
           <img
-            src="https://i.ibb.co/dM8z8yy/Head.png"
+            src="https://i.ibb.co/6RDMpWy/Head.jpg"
             style={{ width: "100%", height: "auto" }}
-            alt=""
+            alt="datazoForYou"
           />
+          <div
+            style={{
+              position: "absolute",
+              top: "59%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              textAlign: "center",
+              width: "100%",
+            }}
+          >
+            <h2
+              style={{ color: "#fff", fontSize: "3.6vw", fontWeight: "bold" }}
+            >
+              ¿Estabas buscando un profesional<br></br>
+              de confianza para tu hogar?
+            </h2>
+          </div>
+          <div
+            style={{
+              position: "absolute",
+              top: "72%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              textAlign: "center",
+              width: "100%",
+            }}
+          >
+            <h2
+              style={{ color: "#fff", fontSize: "2.5vw", fontWeight: "bold" }}
+            >
+              ¡Tenemos un datazo para vos!
+            </h2>
+          </div>
         </div>
       </section>
       <br></br>
-
-      <section>
-        <div
-          className="card-container text-center"
-          style={{ padding: "0 20px" }}
-        >
-          <img src="https://i.ibb.co/kSn8Z6B/Card.png" alt="" />
-        </div>
-      </section>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
 
       <section
         className="text-center"
-        style={{ textAlign: "center", marginTop: "60px" }}
+        style={{ textAlign: "center", marginTop: "10px" }}
       >
-        <a
-          href="#categories"
-          className="btn btn-lg active"
-          role="button"
-          aria-pressed="true"
-          style={{ fontSize: "20px", padding: "10px 20px", color: "#f27405" }}
-        >
-          Ver Categorías ▼
-        </a>
+        <div>
+          <h2 style={{ color: "#494C4F", fontWeight: "bold" }}>
+            ¿QUÉ NECESITAS?
+          </h2>
+        </div>
       </section>
+      <br></br>
+      <br></br>
+
+      <div className="categories-container" onClick={alertLogged}>
+        <Link to={`/dash/professionals/Plomero`}>
+          <a href="#plomeros" style={{ margin: "1.5vw" }}>
+            <img src="https://i.ibb.co/9NvChV2/1.jpg" alt="Plomeros" />
+          </a>
+        </Link>
+        <Link to={`/dash/professionals/Gasista`}>
+          {" "}
+          <a href="#gasistas" style={{ margin: "1.5vw" }}>
+            <img src="https://i.ibb.co/C0CxB25/2.jpg" alt="Gasistas" />
+          </a>
+        </Link>
+        <Link to={`/dash/professionals/Pintor`}>
+          <a href="#pintores" style={{ margin: "1.5vw" }}>
+            <img src="https://i.ibb.co/4KSr9G0/3.jpg" alt="Pintores" />
+          </a>
+        </Link>
+        <Link to={`/dash/professionals/Carpintero`}>
+          {" "}
+          <a href="#carpinteros" style={{ margin: "1.5vw" }}>
+            <img src="https://i.ibb.co/B3cryBp/4.jpg" alt="Carpinteros" />
+          </a>
+        </Link>
+        <Link to={`/dash/professionals/Electricista`}>
+          {" "}
+          <a href="#electricistas" style={{ margin: "1.5vw" }}>
+            <img src="https://i.ibb.co/bBxL0gt/5.jpg" alt="Electricistas" />
+          </a>
+        </Link>
+        <Link to={`/dash/professionals/Albañil`}>
+          <a href="#albaniles" style={{ margin: "1.5vw" }}>
+            <img src="https://i.ibb.co/pvN31p3/6.jpg" alt="Alba-iles" />
+          </a>
+        </Link>
+      </div>
+
+      <br></br>
+
+      <br></br>
       <section
-        id="categories"
-        style={{
-          width: "100%",
-          height: "auto",
-        }}
+        className="text-center"
+        style={{ textAlign: "center", marginTop: "10px" }}
       >
-        <div
+        <div>
+          <h2 style={{ color: "#494C4F", fontWeight: "bold" }}>
+            ¿SOS PROFESIONAL?
+          </h2>
+        </div>
+        <div>
+          <h5 style={{ color: "#494C4F", textAlign: "center" }}>
+            <br></br>
+            Querés encontrar nuevos clientes y ganar dinero extra,<br></br>
+            además de elegir cuándo y cómo trabajar? Sé parte de la red<br></br>
+            de Datazo hoy, sin costo
+          </h5>
+        </div>
+        <br></br>
+
+        <button
+          className="btn-ver-categorias"
           style={{
-            width: "auto",
+            backgroundColor: "#F47024",
+            color: "#F47024",
+            border: "1px solid #F47024",
+            borderRadius: "25px",
+            padding: "8px 25px",
+            fontSize: "1.1em",
             height: "auto",
+            width: "auto",
           }}
         >
-          <div className="parrafo">
-            <h3 style={{ color: "#003169" }}>
-              ¡Buscá según la categoría que necesitás!
-            </h3>
-          </div>
+          <a
+            href="/workWithUs"
+            style={{
+              textDecoration: "none",
+              color: "white",
+              fontFamily: "Inter",
+              fontWeight: "600",
+            }}
+          >
+            Quiero ser parte
+          </a>
+        </button>
+        <br />
+      </section>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
 
-          <div id="categorias" className=" text-center">
-            <div className="row justify-content-center">
-              <div className="col-2">
-                <Link to={`/dash/professionals/Plomero`}>
-                  <a href="#plomeros" className="botoncategorias">
-                    <img
-                      src="https://i.ibb.co/LzGk2nC/Plomeros.png"
-                      alt="Plomero"
-                    ></img>
-                  </a>
-                </Link>
-              </div>
-              <div className="col-2">
-                <Link to={`/dash/professionals/Gasista`}>
-                  <a href="#gasistas" className="botoncategorias">
-                    <img
-                      src="https://i.ibb.co/zS3KzQ3/Gasistas.png"
-                      alt="Gasista"
-                    ></img>
-                  </a>
-                </Link>
-              </div>
-              <div className="col-2">
-                <Link to={`/dash/professionals/Pintor`}>
-                  <a href="#pintores" className="botoncategorias">
-                    <img
-                      src="https://i.ibb.co/5kP23P9/Pintores.png"
-                      alt="Pintor"
-                    ></img>
-                  </a>
-                </Link>
-              </div>
-            </div>
-            <div className="row justify-content-center mt-3">
-              <div className="col-2">
-                <Link to={`/dash/professionals/Carpintero`}>
-                  <a href="#carpinteros" className="botoncategorias">
-                    <img
-                      src="https://i.ibb.co/3SB9f4p/Carpinteros.png"
-                      alt="Carpintero"
-                    ></img>
-                  </a>
-                </Link>
-              </div>
-              <div className="col-2">
-                <Link to={`/dash/professionals/Electricista`}>
-                  <a href="#electricistas" className="botoncategorias">
-                    <img
-                      src="https://i.ibb.co/rM6Qr0X/Electricistas.png"
-                      alt="Electricista"
-                    ></img>
-                  </a>
-                </Link>
-              </div>
-              <div className="col-2">
-                <Link to={`/dash/professionals/Albañil`}>
-                  <a href="#albaniles" className="botoncategorias">
-                    <img
-                      src="https://i.ibb.co/jWxsHQ4/Alba-iles.png"
-                      alt="Albañil"
-                    ></img>
-                  </a>
-                </Link>
-              </div>
-            </div>
-          </div>
+      <section
+        className="text-center"
+        style={{ textAlign: "center", marginTop: "10px" }}
+      >
+        <div>
+          <h2 style={{ color: "#494C4F", fontWeight: "bold" }}>
+            ¿QUIÉNES SOMOS?
+          </h2>
         </div>
+        <div>
+          <h5 style={{ color: "#494C4F", textAlign: "center" }}>
+            <br></br>
+            Datazo es un proyecto universitario impulsado por alumnos de la
+            <br></br>
+            facultad de ingeniería de la universidad UNSTA de Tucumán. Este
+            <br></br>
+            surge para facilitarte la búsqueda de profesionales en servicios de
+            <br></br>
+            mantenimiento y reparaciones para solucionar problemas cotidianos
+            <br></br>
+            del hogar, a través de una plataforma intuitiva y confiable, que
+            <br></br>
+            conecte a usuarios con expertos en el campo.
+          </h5>
+        </div>
+        <br></br>
+
+        <button
+          className="btn-ver-categorias"
+          style={{
+            backgroundColor: "white",
+            color: "#F47024",
+            border: "3px solid #F47024",
+            borderRadius: "8px",
+            padding: "8px 25px",
+            fontSize: "1.1em",
+            height: "auto",
+            width: "auto",
+          }}
+        >
+          <a
+            href="#  | | | | | | | | | |  "
+            style={{
+              textDecoration: "none",
+              color: "#F47024",
+              fontFamily: "Inter",
+              fontWeight: "600",
+            }}
+          >
+            Más información
+          </a>
+        </button>
+        <br />
       </section>
       <br />
       <br />
@@ -151,6 +240,5 @@ const Public = () => {
       <br />
     </>
   );
-  return content;
 };
 export default Public;

@@ -7,6 +7,10 @@
 
 # testing
 /coverage
+test
+__snapshots__
+cypress.config.js
+cypress
 
 # production
 /build

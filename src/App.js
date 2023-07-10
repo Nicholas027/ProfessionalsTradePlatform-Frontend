@@ -3,7 +3,6 @@ import Layout from "./components/Layout";
 import Public from "./components/Public";
 import Login from "./features/auth/Login";
 import DashLayout from "./components/DashLayout";
-import Welcome from "./features/auth/Welcome";
 import PersistLogin from "./features/auth/PersistLogin";
 import RequireAuth from "./features/auth/RequireAuth";
 import { ROLES } from "./config/roles";
@@ -15,7 +14,14 @@ import WorkWithUs from "./components/WorkWithUs";
 import NotFound from "./components/NotFound";
 import Professionals from "./components/Professionals";
 import ProfessionalDetails from "./components/ProfessionalsDetails";
+import ContactRegister from "./components/ContactRegister";
 import React from "react";
+import ComentarYCalificar from "./components/ComentarYCalificar";
+import MisSolicitudes from "./components/MisSolicitudes";
+import UltimaSolicitud from "./components/UltimaSolicitud";
+import "primereact/resources/primereact.min.css";
+import "primereact/resources/themes/saga-blue/theme.css";
+import "primeicons/primeicons.css";
 
 function App() {
   useTitle("Datazo.com");
@@ -44,6 +50,22 @@ function App() {
               }
             >
               <Route
+                path="misSolicitudes"
+                element={
+                  <RequireAuthTwo>
+                    <MisSolicitudes />
+                  </RequireAuthTwo>
+                }
+              ></Route>
+              <Route
+                path="ultimaSolicitud"
+                element={
+                  <RequireAuthTwo>
+                    <UltimaSolicitud />
+                  </RequireAuthTwo>
+                }
+              ></Route>
+              <Route
                 path="professionals/:alt"
                 element={
                   <RequireAuthTwo>
@@ -59,8 +81,22 @@ function App() {
                   </RequireAuthTwo>
                 }
               ></Route>
-
-              <Route element={<Welcome />} />
+              <Route
+                path="professionals/:alt/:id"
+                element={
+                  <RequireAuthTwo>
+                    <ContactRegister />
+                  </RequireAuthTwo>
+                }
+              ></Route>
+              <Route
+                path="professionals/:alt/:id/:idSoli/calificacion"
+                element={
+                  <RequireAuthTwo>
+                    <ComentarYCalificar />
+                  </RequireAuthTwo>
+                }
+              ></Route>
             </Route>
             {/* End Dash */}
           </Route>

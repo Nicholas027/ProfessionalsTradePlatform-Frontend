@@ -1,5 +1,5 @@
 /* eslint-disable testing-library/prefer-screen-queries */
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import WorkWithUs from "../components/WorkWithUs";
 import React from "react";
@@ -11,7 +11,16 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe("WorkWithUs component", () => {
-  it("should submit form and redirect to homepage after 3 seconds", () => {
+  it("Debe de mostrar el componente", async () => {
+    const view = render(
+      <BrowserRouter>
+        <WorkWithUs />
+      </BrowserRouter>
+    );
+
+    expect(view).toMatchSnapshot();
+  });
+  it("debe enviar el formulario y redirigir a la página de inicio después de 3 segundos", () => {
     const navigateMock = jest.fn();
     jest
       .spyOn(require("react-router-dom"), "useNavigate")
@@ -35,7 +44,7 @@ describe("WorkWithUs component", () => {
     expect(navigateMock).toHaveBeenCalledWith("/");
   });
 
-  it("should display success message after form submission", () => {
+  it("debe mostrar un mensaje de éxito tras el submit del formulario", () => {
     const { getByText } = render(
       <BrowserRouter>
         <WorkWithUs />
@@ -49,5 +58,31 @@ describe("WorkWithUs component", () => {
         "En breve nuestro equipo lo estará contactando para validar los datos ingresados, esté atento a su buzón de mail"
       )
     ).toBeInTheDocument();
+  });
+
+  it("debe mostrar un error por los campos obligatorios", async () => {
+    // Arrange
+    render(
+      <BrowserRouter>
+        <WorkWithUs />
+      </BrowserRouter>
+    );
+
+    const submitButton = screen.getByText("Enviar");
+
+    // Act
+    fireEvent.click(submitButton);
+
+    // Assert
+    expect(
+      screen.getByPlaceholderText("Ingrese su nombre")
+    ).toBeInTheDocument();
+    expect(
+      screen.getByPlaceholderText("Ingrese su apellido")
+    ).toBeInTheDocument();
+    expect(
+      screen.getByLabelText("Ingrese su número de celular:")
+    ).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Ingrese su email")).toBeInTheDocument();
   });
 });

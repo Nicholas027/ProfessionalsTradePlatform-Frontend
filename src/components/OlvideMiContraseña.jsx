@@ -29,7 +29,7 @@ const OlvideMiContraseña = () => {
         `https://api.apilayer.com/email_verification/${email}`,
         {
           headers: {
-            apikey: "1euOVmfkxNzi22vlVI69VKxkNPfzeZRB",
+            apikey: "ZGMNG0afqZaRiLFavg4q6vFPZeSZlkWS",
           },
         }
       );
