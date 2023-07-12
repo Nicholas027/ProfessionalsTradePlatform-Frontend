@@ -157,6 +157,9 @@ const Layout = () => {
             className="button-container"
             style={{ fontFamily: "Lexend, sans-serif" }}
           >
+            <NavLink className="button" to="/preguntasfrecuentes">
+              Preguntas Frecuentes
+            </NavLink>
             <NavLink className="button" to="/workWithUs">
               Trabaja con Nosotros
             </NavLink>
@@ -347,6 +350,11 @@ const Layout = () => {
             <li className="nav-item">
               <a className="nav-link" href="/">
                 Inicio
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/preguntasfrecuentes">
+                Preguntas Frecuentes
               </a>
             </li>
             <li className="nav-item">
