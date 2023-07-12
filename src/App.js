@@ -19,6 +19,7 @@ import React from "react";
 import ComentarYCalificar from "./components/ComentarYCalificar";
 import MisSolicitudes from "./components/MisSolicitudes";
 import UltimaSolicitud from "./components/UltimaSolicitud";
+import PreguntasFrecuentes from "./components/PreguntasFrecuentes";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primeicons/primeicons.css";
@@ -35,6 +36,8 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
         <Route path="workWithUs" element={<WorkWithUs />} />
+        <Route path="preguntasfrecuentes" element={<PreguntasFrecuentes />} />
+
         <Route path="/login/missPassword" element={<OlvideMiContraseña />} />
         {/* Protected Routes */}
         <Route element={<PersistLogin />}>
