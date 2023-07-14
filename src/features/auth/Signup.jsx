@@ -1,6 +1,5 @@
 import { useState, React } from "react";
 import useTitle from "../../hooks/useTitle";
-import axios from "axios";
 import Swal from "sweetalert2";
 import { NavLink } from "react-router-dom";
 import api from "../../app/api/api";
@@ -72,38 +71,6 @@ export const Signup = () => {
     });
   };
 
-  const validateEmail = async () => {
-    try {
-      const response = await axios.get(
-        `https://api.apilayer.com/email_verification/${formData.email}`,
-        {
-          headers: {
-            apikey: "ZGMNG0afqZaRiLFavg4q6vFPZeSZlkWS",
-          },
-        }
-      );
-      if (response.data.is_deliverable === false) {
-        Swal.fire({
-          icon: "info",
-          text: "El email que ha propocionado no es valido, ingrese uno valido nuevamente.",
-        });
-        return setFormData({
-          nombre: "",
-          apellido: "",
-          numeroContacto: "",
-          email: "",
-          password: "",
-          repassword: "",
-        });
-      } else {
-        return true;
-      }
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -120,11 +87,9 @@ export const Signup = () => {
       formData.numeroContacto.length < 10
         ? "⚠ Su número de celular debe tener 10 dígitos"
         : "";
-    errors.email =
-      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) &&
-      (await validateEmail())
-        ? ""
-        : "⚠ Formato de email invalido, debe respetar el formato: xxx@xxx.com";
+    errors.email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+      ? ""
+      : "⚠ Formato de email invalido, debe respetar el formato: xxx@xxx.com";
     errors.password =
       formData.password.length < 6
         ? "⚠ La contraseña debe contener más de 6 caracteres"
