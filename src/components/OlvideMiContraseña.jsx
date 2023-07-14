@@ -7,7 +7,6 @@ import {
 } from "./OlvideContraseña";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 const OlvideMiContraseña = () => {
   useTitle("Olvide mi contraseña");
@@ -23,37 +22,11 @@ const OlvideMiContraseña = () => {
 
   const navigate = useNavigate();
 
-  const validateEmail = async () => {
-    try {
-      const response = await axios.get(
-        `https://api.apilayer.com/email_verification/${email}`,
-        {
-          headers: {
-            apikey: "ZGMNG0afqZaRiLFavg4q6vFPZeSZlkWS",
-          },
-        }
-      );
-      if (response.data.is_deliverable === false) {
-        Swal.fire({
-          icon: "info",
-          text: "El email que ha propocionado no es valido",
-        });
-        setIsLoading(false);
-      } else {
-        return true;
-      }
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  };
-
   const handlePasswordRecoveryMail = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-    const isValidEmail = await validateEmail();
-    if (!emailRegex.test(email) || !isValidEmail) {
+    if (!emailRegex.test(email)) {
       setEmailError(
         "Formato de mail invalido o mail invalido: Debe cumplir con el formato: xxx@xxx.com y ser un mail valido"
       );
