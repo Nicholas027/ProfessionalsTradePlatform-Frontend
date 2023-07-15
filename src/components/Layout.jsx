@@ -55,10 +55,13 @@ const Layout = () => {
             <h1 className="footer-heading">Accesos</h1>
             <ul className="footer-list">
               <li className="a-footer">
-                <a href="/#faqs">Preguntas Frecuentes</a>
+                <a href="/preguntasfrecuentes">Preguntas Frecuentes</a>
               </li>
               <li className="a-footer">
                 <a href="/workwithus">Trabaja con nosotros!</a>
+              </li>
+              <li className="a-footer">
+                <a href="/terminosycondiciones">Términos y Condiciones</a>
               </li>
               {user ? (
                 <></>
@@ -353,17 +356,17 @@ const Layout = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/preguntasfrecuentes">
-                Preguntas Frecuentes
-              </a>
-            </li>
-            <li className="nav-item">
               <a className="nav-link" href="/workWithUs">
                 Trabaja con Nosotros
               </a>
             </li>
             {user ? (
               <>
+                <li className="nav-item">
+                  <a className="nav-link" href="/preguntasfrecuentes">
+                    Preguntas Frecuentes
+                  </a>
+                </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/dash/misSolicitudes">
                     Mis Solicitudes

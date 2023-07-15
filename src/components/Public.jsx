@@ -141,9 +141,8 @@ const Public = () => {
         <div>
           <h5 style={{ color: "#494C4F", textAlign: "center" }}>
             <br></br>
-            Querés encontrar nuevos clientes y ganar dinero extra,<br></br>
-            además de elegir cuándo y cómo trabajar? Sé parte de la red<br></br>
-            de Datazo hoy, sin costo
+            Querés encontrar nuevos clientes y darte a conocer?<br></br>
+            Sé parte de la red de Datazo hoy, sin costo
           </h5>
         </div>
         <br></br>
@@ -192,17 +191,16 @@ const Public = () => {
         <div>
           <h5 style={{ color: "#494C4F", textAlign: "center" }}>
             <br></br>
-            Datazo es un proyecto universitario impulsado por alumnos de la
+            Datazo es una iniciativa llevada a cabo por estudiantes de la
+            Facultad de Ingeniería de la UNSTA.
             <br></br>
-            facultad de ingeniería de la universidad UNSTA de Tucumán. Este
+            Tiene como objetivo simplificar la búsqueda de profesionales en
+            servicios de mantenimiento del hogar.
+            <br></br>A través de una plataforma intuitiva y confiable, Datazo
+            conecta a los usuarios con expertos en el campo,
             <br></br>
-            surge para facilitarte la búsqueda de profesionales en servicios de
-            <br></br>
-            mantenimiento y reparaciones para solucionar problemas cotidianos
-            <br></br>
-            del hogar, a través de una plataforma intuitiva y confiable, que
-            <br></br>
-            conecte a usuarios con expertos en el campo.
+            brindando una solución eficiente y confiable a sus problemas
+            cotidianos.
           </h5>
         </div>
         <br></br>
@@ -210,10 +208,10 @@ const Public = () => {
         <button
           className="btn-ver-categorias"
           style={{
-            backgroundColor: "white",
+            backgroundColor: "#F47024",
             color: "#F47024",
-            border: "3px solid #F47024",
-            borderRadius: "8px",
+            border: "1px solid #F47024",
+            borderRadius: "25px",
             padding: "8px 25px",
             fontSize: "1.1em",
             height: "auto",
@@ -221,10 +219,10 @@ const Public = () => {
           }}
         >
           <a
-            href="#  | | | | | | | | | |  "
+            href="/PDFDeLaDocumentación"
             style={{
               textDecoration: "none",
-              color: "#F47024",
+              color: "white",
               fontFamily: "Inter",
               fontWeight: "600",
             }}
@@ -232,8 +230,10 @@ const Public = () => {
             Más información
           </a>
         </button>
+
         <br />
       </section>
+      <br />
       <br />
       <br />
       <br />
