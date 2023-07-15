@@ -23,6 +23,7 @@ import PreguntasFrecuentes from "./components/PreguntasFrecuentes";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primeicons/primeicons.css";
+import PoliticaDePrivacidad from "./components/PoliticaDePrivacidad";
 
 function App() {
   useTitle("Datazo.com");
@@ -37,6 +38,7 @@ function App() {
         <Route path="signup" element={<Signup />} />
         <Route path="workWithUs" element={<WorkWithUs />} />
         <Route path="preguntasfrecuentes" element={<PreguntasFrecuentes />} />
+        <Route path="terminosycondiciones" element={<PoliticaDePrivacidad />} />
 
         <Route path="/login/missPassword" element={<OlvideMiContraseña />} />
         {/* Protected Routes */}
