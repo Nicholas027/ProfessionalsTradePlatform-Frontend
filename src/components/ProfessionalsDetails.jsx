@@ -287,7 +287,7 @@ const ProfessionalDetails = () => {
         </h6>
 
         {filteredProfessionals.length > 0 ? (
-          filteredProfessionals.map((professional) => (
+          filteredProfessionals.slice(0, 3).map((professional) => (
             <div className="col-12 mb-5" key={professional.id}>
               <div className="card-body">
                 <div className="d-flex align-items-center">
