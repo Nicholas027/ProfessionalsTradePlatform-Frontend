@@ -181,6 +181,16 @@ const Login = () => {
                       <button
                         type="submit"
                         className="btn btn-block btn-primary text-center"
+                        style={{
+                          backgroundColor: "#F47024",
+                          color: "white",
+                          border: "1px solid #F47024",
+                          borderRadius: "5px",
+                          padding: "8px 12px",
+                          fontSize: "1.0em",
+                          height: "auto",
+                          width: "auto",
+                        }}
                       >
                         Iniciar Sesión
                       </button>
