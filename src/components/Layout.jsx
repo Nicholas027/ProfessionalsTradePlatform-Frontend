@@ -4,19 +4,23 @@ import { UserContext } from "../features/context/UserProvider";
 import useAuth from "../hooks/useAuth";
 import api from "../app/api/api";
 
+
 const Layout = () => {
   const { user, signOut } = useContext(UserContext);
   const { email } = useAuth();
   const [ultimaSolicitud, setUltimaSolicitud] = useState(null);
 
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
 
   useEffect(() => {
     const fetchUltimaSolicitud = async () => {
       try {
         const response = await api.get(`/auth/getInfo/${email}`);
+
 
         const misSolicitudes = response.data.misSolicitudes;
         const ultimaSolicitud = misSolicitudes[misSolicitudes.length - 1];
@@ -26,8 +30,10 @@ const Layout = () => {
       }
     };
 
+
     fetchUltimaSolicitud();
   }, [email]);
+
 
   function Footer() {
     const location = useLocation();
@@ -78,6 +84,7 @@ const Layout = () => {
             </ul>
           </div>
 
+
           <div className="footer-access">
             <h2 className="footer-heading">Contacto</h2>
             <ul className="footer-list">
@@ -85,6 +92,7 @@ const Layout = () => {
               <li>Dirección: Av Perón 2085</li>
             </ul>
           </div>
+
 
           <div className="footer-contact">
             <h2
@@ -167,49 +175,19 @@ const Layout = () => {
               Trabaja con Nosotros
             </NavLink>
 
+
             {user ? (
               <>
-                <div
-                  className="dropdown"
-                  style={{ marginRight: "25px", marginTop: "5px" }}
+                {/* <NavLink to="dash/ultimaSolicitud"
+                  className="button"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="icon icon-tabler icon-tabler-bell"
-                    width="35"
-                    height="35"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="#FA7C1F"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
-                    <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
-                  </svg>
-                  <div
-                    className="dropdown-menu"
-                    style={{ backgroundColor: "white" }}
-                  >
-                    <a className="dropdown-item">
-                      <NavLink
-                        to="dash/ultimaSolicitud"
-                        style={{ textDecoration: "none", color: "inherit" }}
-                      >
-                        Última solicitud:
-                        <br />
-                        {ultimaSolicitud ? (
-                          <p>{ultimaSolicitud.profesional}</p>
-                        ) : (
-                          <p>No hay solicitudes</p>
-                        )}
-                      </NavLink>
-                    </a>
-                  </div>
-                </div>
-
+                  Última Solicitud
+                </NavLink> */}
+                <NavLink to="dash/misSolicitudes"
+                  className="button"
+                >
+                  Mis Solicitudes
+                </NavLink>
                 <div className="dropdown" style={{ marginTop: "5px" }}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -232,14 +210,15 @@ const Layout = () => {
                     className="dropdown-menu"
                     style={{ backgroundColor: "white" }}
                   >
-                    <a className="dropdown-item">
+                    {/* <a className="dropdown-item">
                       <NavLink
                         to="dash/misSolicitudes"
                         style={{ textDecoration: "none", color: "inherit" }}
+                        onClick={handleReiniciar}
                       >
-                        Mis solicitudes
+                        Mis solicitudes: <br/> {contador} Nuevas
                       </NavLink>
-                    </a>
+                    </a> */}
                     <a
                       className="dropdown-item item-logout"
                       href="#cerrarSesion"
@@ -339,6 +318,7 @@ const Layout = () => {
           </svg>
         </a>
 
+
         <button
           className="navbar-toggler"
           type="button"
@@ -347,6 +327,7 @@ const Layout = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
 
         <div className="collapse navbar-collapse" id="opciones">
           <ul className="navbar-nav" style={{ marginLeft: "10px" }}>
@@ -393,6 +374,7 @@ const Layout = () => {
           </ul>
         </div>
       </nav>
+
 
       <Outlet />
       {<Footer />}
