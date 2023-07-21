@@ -5,7 +5,7 @@ import api from "../app/api/api";
 import Swal from "sweetalert2";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { isValid } from "date-fns";
 import { Calendar } from "primereact/calendar";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
@@ -109,6 +109,19 @@ const ContactRegister = ({
       return;
     }
 
+    const today = new Date();
+    if (
+      !isValid(fecha[0]) ||
+      !isValid(fecha[1]) ||
+      fecha[0] < today ||
+      fecha[1] < today
+    ) {
+      setErrorFecha(
+        "Por favor ingrese un rango de fechas válido, que no sea anterior a la fecha de hoy."
+      );
+      return;
+    }
+
     if (fecha[1] === null) {
       setErrorFecha("Por favor, seleccione una segunda fecha en el rango.");
       return;
@@ -138,6 +151,7 @@ const ContactRegister = ({
       title: "Trabajo enviado correctamente!",
       text: `Te contactaremos en los próximos días por email para avisarte si ${nombreProf} aceptó tu solicitud! Puedes monitorear el estado de tus solicitudes en "Mis Solicitudes"`,
     });
+
     setTimeout(navigate("/"), 4000);
   };
 
@@ -363,7 +377,20 @@ const ContactRegister = ({
                 </div>
                 <br />
 
-                <button type="submit" className="btn btn-primary btn-block">
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-block"
+                  style={{
+                    backgroundColor: "#F47024",
+                    color: "white",
+                    border: "1px solid #F47024",
+                    borderRadius: "5px",
+                    padding: "8px 12px",
+                    fontSize: "1.0em",
+                    height: "auto",
+                    width: "auto",
+                  }}
+                >
                   Enviar a {nombreProf} <FontAwesomeIcon icon={faPaperPlane} />
                 </button>
                 <button

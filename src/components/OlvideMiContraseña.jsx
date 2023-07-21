@@ -114,7 +114,20 @@ const OlvideMiContraseña = () => {
                 {""} Cargando...
               </button>
             ) : (
-              <button type="submit" className="btn btn-primary">
+              <button
+                type="submit"
+                className="btn btn-primary"
+                style={{
+                  backgroundColor: "#F47024",
+                  color: "white",
+                  border: "1px solid #F47024",
+                  borderRadius: "5px",
+                  padding: "8px 12px",
+                  fontSize: "1.0em",
+                  height: "auto",
+                  width: "auto",
+                }}
+              >
                 Recuperar contraseña
               </button>
             )}
@@ -168,7 +181,20 @@ const OlvideMiContraseña = () => {
                   autoComplete="off"
                 />
               </div>
-              <button type="submit" className="btn btn-primary">
+              <button
+                type="submit"
+                className="btn btn-primary"
+                style={{
+                  backgroundColor: "#F47024",
+                  color: "white",
+                  border: "1px solid #F47024",
+                  borderRadius: "5px",
+                  padding: "8px 12px",
+                  fontSize: "1.0em",
+                  height: "auto",
+                  width: "auto",
+                }}
+              >
                 Verificar Código
               </button>
             </form>
