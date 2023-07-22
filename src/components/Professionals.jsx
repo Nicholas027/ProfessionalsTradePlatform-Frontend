@@ -13,6 +13,7 @@ const Professionals = () => {
   const [sortBy, setSortBy] = useState("todos");
   useTitle("Buscar Profesionales");
 
+
   //GET de profesionales cuando el componente se renderice
   useEffect(() => {
     const fetchProfessionals = async () => {
@@ -20,12 +21,15 @@ const Professionals = () => {
       setProfessionals(response.data.professional);
     };
 
+
     fetchProfessionals();
   }, []);
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
 
   //Filtro para hacer coincidir la ocupacion del profesional y el alt de la imagen
   useEffect(() => {
@@ -35,10 +39,12 @@ const Professionals = () => {
     setFilteredProfessionals(filtered);
   }, [alt, professionals]);
 
+
   //Función para ordenar la lista de profesionales según la opción seleccionada en el dropdown
   const sortProfessionals = (sortOption) => {
     setSortBy(sortOption);
     let sortedProfessionals = [...filteredProfessionals];
+
 
     if (sortOption === "mejorCalificacion") {
       sortedProfessionals.sort((a, b) => b.calificacion - a.calificacion);
@@ -52,16 +58,20 @@ const Professionals = () => {
     setFilteredProfessionals(sortedProfessionals);
   };
 
+
   function renderStars(numStars) {
     const fullStars = Math.floor(numStars);
     const halfStars = Math.round(numStars - fullStars);
     const emptyStars = 5 - fullStars - halfStars;
 
+
     const stars = [];
+
 
     for (let i = 0; i < fullStars; i++) {
       stars.push(<FontAwesomeIcon icon={faStar} key={`star-${i}`} />);
     }
+
 
     if (halfStars > 0) {
       stars.push(
@@ -73,6 +83,7 @@ const Professionals = () => {
       );
     }
 
+
     for (let i = 0; i < emptyStars; i++) {
       stars.push(
         <FontAwesomeIcon
@@ -83,8 +94,10 @@ const Professionals = () => {
       );
     }
 
+
     return stars;
   }
+
 
   return (
     <>
@@ -159,6 +172,14 @@ const Professionals = () => {
                     >
                       <div className="card-body">
                         <div className="d-flex align-items-center">
+                        <Link
+                                to={`/dash/professionals/${alt}/${professional._id}`}
+                                style={{
+                                  color: "black",
+                                  textDecoration: "none",
+                                }}
+                                className="linktoprof"
+                              >
                           <img
                             src={professional.foto}
                             alt="FotoPerfil"
@@ -171,6 +192,7 @@ const Professionals = () => {
                               marginBottom: "20px",
                             }}
                           />
+                          </Link>
                           <div>
                             <h5
                               className="card-title"
@@ -227,5 +249,6 @@ const Professionals = () => {
     </>
   );
 };
+
 
 export default Professionals;
